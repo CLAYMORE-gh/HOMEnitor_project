@@ -1,0 +1,104 @@
+﻿@page
+@model HOMEnitor.Pages.AdminComplaintsModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Manage Complaints";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8" />
+    <title>Manage Complaints</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="/AdminDashboard">Dashboard</a>
+        <a href="/AdminHomeowners">Homeowners</a>
+        <a href="/AdminUnits">Units</a>
+        <a href="/AdminTransaction">Transactions</a>
+        <a href="/AdminComplaints" class="active">Complaints</a>
+        <a href="/AdminAmenity">Amenity</a>
+        <a href="/AdminUsers">Users</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Manage Complaints</h1>
+
+        <h2>Complaints List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Complaint ID</th>
+                    <th>User ID</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model.Complaints)
+                {
+                    <tr>
+                        <td>@c.ComplaintID</td>
+                        <td>@c.UserID</td>
+                        <td>@c.Description</td>
+                        <td>@c.Date</td>
+                        <td>@c.Status</td>
+                        <td>
+                            <button type="button" onclick="openEditForm('@c.ComplaintID', '@c.Status')">Change Status</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>Change Complaint Status</h2>
+            <form method="post" asp-page-handler="Update">
+                <label>Complaint ID</label>
+                <input type="text" id="editComplaintID" name="ComplaintID" readonly />
+
+                <label>Status</label>
+                <select id="editStatus" name="Status" required>
+                    <option value="Pending">Pending</option>
+                    <option value="Resolved">Resolved</option>
+                    <option value="Dropped">Dropped</option>
+                </select>
+
+                <br /><br />
+                <button type="submit">Save</button>
+                <button type="button" class="close-btn" onclick="closeEditForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openEditForm(id, status) {
+            document.getElementById("editComplaintID").value = id;
+            document.getElementById("editStatus").value = status;
+            document.getElementById("editModal").style.display = "flex";
+        }
+
+        function closeEditForm() {
+            document.getElementById("editModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const editModal = document.getElementById("editModal");
+            if (event.target === editModal) editModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

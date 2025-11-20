@@ -1,0 +1,150 @@
+﻿@page
+@model HOMEnitor.Pages.CashierAmenityModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Approved Amenities";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Approved Amenities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        .sidebar {
+            width: 230px;
+            background: linear-gradient(to top, #ff1300, #ff6a00);
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h2 {
+                text-align: center;
+                font-size: 22px;
+                margin-bottom: 25px;
+                font-weight: bold;
+            }
+
+            .sidebar a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 12px 15px;
+                border-radius: 6px;
+                margin-bottom: 8px;
+                font-weight: 500;
+                transition: background-color 0.2s ease, transform 0.1s ease;
+            }
+
+                .sidebar a:hover {
+                    background-color: #ca4c35;
+                    transform: translateX(3px);
+                }
+
+                .sidebar a.active {
+                    background-color: #ca4c35;
+                }
+
+        .main {
+            margin-left: 250px;
+            padding: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ff1300;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .logout-btn {
+            background-color: white;
+            color: #ff1300;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+            .logout-btn:hover {
+                background-color: #ca4c35;
+                color: white;
+            }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Cashier</h2>
+        <a href="/CashierDashboard">Dashboard</a>
+        <a href="/CashierTransactions">Transactions</a>
+        <a href="/CashierAmenity" class="active">Amenities</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Approved Amenities</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Access ID</th>
+                    <th>User ID</th>
+                    <th>Amenity</th>
+                    <th>Access Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model.ApprovedAmenities)
+                {
+                    <tr>
+                        <td>@a.AccessID</td>
+                        <td>@a.UserID</td>
+                        <td>@a.AmenityName</td>
+                        <td>@a.AccessDate.ToString("yyyy-MM-dd")</td>
+                        <td>@a.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

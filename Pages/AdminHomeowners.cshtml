@@ -1,0 +1,154 @@
+﻿@page
+@model HOMEnitor.Pages.AdminHomeownersModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Manage Homeowners";
+}
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="~/css/site.css" />
+
+<head>
+    <meta charset="utf-8" />
+    <title>Manage Homeowners</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="/AdminDashboard">Dashboard</a>
+        <a href="/AdminHomeowners" class="active">Homeowners</a>
+        <a href="/AdminUnits">Units</a>
+        <a href="/AdminTransaction">Transactions</a>
+        <a href="/AdminComplaints">Complaints</a>
+        <a href="/AdminAmenity">Amenity</a>
+        <a href="/AdminUsers">Users</a>
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Manage Homeowners</h1>
+        <button class="add-btn" onclick="openAddForm()">+ Add Homeowner</button>
+        <h2>Homeowners List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First</th>
+                    <th>Middle</th>
+                    <th>Last</th>
+                    <th>Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var h in Model.Homeowners)
+                {
+                    <tr>
+                        <td>@h.HomeownerID</td>
+                        <td>@h.FirstName</td>
+                        <td>@h.MiddleName</td>
+                        <td>@h.LastName</td>
+                        <td>@h.ContactInfo</td>
+                        <td>
+                            <button type="button" onclick="openEditForm('@h.HomeownerID', '@h.FirstName', '@h.MiddleName', '@h.LastName', '@h.ContactInfo')">Edit</button>
+                            <button type="button" onclick="confirmDelete('@h.HomeownerID')">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Add Homeowner</h2>
+            <form method="post" asp-page-handler="Add">
+                <label>Homeowner ID</label>
+                <input type="text" value="(Auto)" readonly />
+                <label>First Name</label>
+                <input name="FirstName" required />
+                <label>Middle Name</label>
+                <input name="MiddleName" />
+                <label>Last Name</label>
+                <input name="LastName" required />
+                <label>Contact Info</label>
+                <input name="ContactInfo" required />
+                <br /><br />
+                <button type="submit">Add</button>
+                <button type="button" class="close-btn" onclick="closeAddForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Homeowner</h2>
+            <form method="post" asp-page-handler="Update">
+                <label>Homeowner ID</label>
+                <input type="text" id="editHomeownerID" name="HomeownerID" readonly />
+                <label>First Name</label>
+                <input type="text" id="editFirstName" name="FirstName" required />
+                <label>Middle Name</label>
+                <input type="text" id="editMiddleName" name="MiddleName" />
+                <label>Last Name</label>
+                <input type="text" id="editLastName" name="LastName" required />
+                <label>Contact Info</label>
+                <input type="text" id="editContactInfo" name="ContactInfo" required />
+                <br /><br />
+                <button type="submit">Save</button>
+                <button type="button" class="close-btn" onclick="closeEditForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3>Are you sure you want to delete this homeowner?</h3>
+            <form method="post" asp-page-handler="Delete">
+                <input type="hidden" name="id" id="deleteId" />
+                <button type="submit">Yes, Delete</button>
+                <button type="button" class="close-btn" onclick="closeDeleteForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openAddForm() {
+            document.getElementById("addModal").style.display = "flex";
+        }
+        function closeAddForm() {
+            document.getElementById("addModal").style.display = "none";
+        }
+        function openEditForm(id, first, middle, last, contact) {
+            document.getElementById("editHomeownerID").value = id;
+            document.getElementById("editFirstName").value = first;
+            document.getElementById("editMiddleName").value = middle;
+            document.getElementById("editLastName").value = last;
+            document.getElementById("editContactInfo").value = contact;
+            document.getElementById("editModal").style.display = "flex";
+        }
+        function closeEditForm() {
+            document.getElementById("editModal").style.display = "none";
+        }
+        function confirmDelete(id) {
+            document.getElementById("deleteId").value = id;
+            document.getElementById("deleteModal").style.display = "flex";
+        }
+        function closeDeleteForm() {
+            document.getElementById("deleteModal").style.display = "none";
+        }
+        window.onclick = function (event) {
+            ["addModal", "editModal", "deleteModal"].forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target === modal) modal.style.display = "none";
+            });
+        };
+    </script>
+</body>
+</html>

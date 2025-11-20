@@ -1,0 +1,79 @@
+﻿@page
+@model HOMEnitor.Pages.AdminAmenityModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin - Amenities</title>
+    <style>
+        button:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="/AdminDashboard">Dashboard</a>
+        <a href="/AdminHomeowners">Homeowners</a>
+        <a href="/AdminUnits">Units</a>
+        <a href="/AdminTransaction">Transactions</a>
+        <a href="/AdminComplaints">Complaints</a>
+        <a href="/AdminAmenity" class="active">Amenity</a>
+        <a href="/AdminUsers">Users</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Amenity Requests</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Access ID</th>
+                    <th>User ID</th>
+                    <th>Amenity</th>
+                    <th>Access Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model.Amenities)
+                {
+                    bool locked = a.Status != "Pending";
+                    <tr>
+                        <td>@a.AccessID</td>
+                        <td>@a.UserID</td>
+                        <td>@a.AmenityName</td>
+                        <td>@a.AccessDate.ToString("yyyy-MM-dd")</td>
+                        <td>@a.Status</td>
+                        <td>
+                            <form method="post" asp-page-handler="Approve" style="display:inline;">
+                                <input type="hidden" name="AccessID" value="@a.AccessID" />
+                                <button type="submit" class="btn-approve" disabled="@locked">Approve</button>
+                            </form>
+                            <form method="post" asp-page-handler="Deny" style="display:inline;">
+                                <input type="hidden" name="AccessID" value="@a.AccessID" />
+                                <button type="submit" class="btn-deny" disabled="@locked">Deny</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

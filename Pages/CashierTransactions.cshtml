@@ -1,0 +1,196 @@
+﻿@page
+@model HOMEnitor.Pages.CashierTransactionsModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Manage Transactions";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Manage Transactions</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .select-field, .dynamic-field {
+            margin-bottom: 12px;
+            padding: 6px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Cashier</h2>
+        <a href="/CashierDashboard">Dashboard</a>
+        <a href="/CashierTransactions" class="active">Transactions</a>
+        <a href="/CashierAmenity">Amenities</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Manage Transactions</h1>
+        <button class="add-btn" onclick="openAddForm()">+ Add New Transaction</button>
+
+        <h2>Transaction List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>Sale Type</th>
+                    <th>Payment Method</th>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Amount Paid</th>
+                    <th>Total</th>
+                    <th>Date Paid</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model.Transactions)
+                {
+                    <tr>
+                        <td>@t.TransactionID</td>
+                        <td>@t.UserID</td>
+                        <td>@t.SaleType</td>
+                        <td>@t.PaymentMethod</td>
+                        <td>@t.ItemDescription</td>
+                        <td>@t.Quantity</td>
+                        <td>@t.UnitPrice</td>
+                        <td>@t.AmountPaid</td>
+                        <td>@t.TotalAmount</td>
+                        <td>@t.DatePaid.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <button onclick="openEditForm('@t.TransactionID','@t.UserID','@t.SaleType.Replace("'", "\\'")','@t.PaymentMethod.Replace("'", "\\'")','@t.ItemDescription.Replace("'", "\\'")','@t.Quantity','@t.UnitPrice','@t.AmountPaid','@t.TotalAmount')">Edit</button>
+                            <button onclick="openDeleteForm('@t.TransactionID')">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ADD MODAL -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Add Transaction</h2>
+            <form method="post" asp-page-handler="Add" id="addForm">
+                <label>User ID</label>
+                <input type="number" name="UserID" required />
+
+                <label>Sale Type</label>
+                <select name="SaleType" id="addSaleType" required class="select-field" onchange="updateAddFormFields()">
+                    <option value="" disabled selected>Select Sale Type</option>
+                    <option value="Amenity">Amenity</option>
+                    <option value="House Payment">House Payment</option>
+                    <option value="Monthly Dues">Monthly Dues</option>
+                    <option value="Maintenance">Maintenance</option>
+                </select>
+
+                <!-- Amenity Fields -->
+                <div id="amenityFields" class="dynamic-field hidden">
+                    <label>Payment Method</label>
+                    <select name="PaymentMethod" class="select-field">
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                        <option value="Others">Others</option>
+                    </select>
+
+                    <label>Amenity Description</label>
+                    <input type="text" name="ItemDescription" />
+
+                    <label>Unit Price</label>
+                    <input type="number" id="addUnitPrice" name="UnitPrice" oninput="updateAddTotal()" />
+
+                    <label>Quantity</label>
+                    <input type="number" id="addQuantity" name="Quantity" oninput="updateAddTotal()" />
+
+                    <label>Total Amount</label>
+                    <input type="number" id="addTotalAmount" name="TotalAmount" readonly />
+
+                    <label>Amount Paid</label>
+                    <input type="number" name="AmountPaid" />
+                </div>
+
+                <!-- Other Sale Types Fields -->
+                <div id="otherFields" class="dynamic-field hidden">
+                    <label>Payment Method</label>
+                    <select name="PaymentMethod" class="select-field">
+                        <option value="" disabled selected>Select Payment Method</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                        <option value="Others">Others</option>
+                    </select>
+
+                    <label>Item Description</label>
+                    <input type="text" name="ItemDescription" />
+
+                    <label>Unit Price</label>
+                    <input type="number" id="addUnitPriceOther" name="UnitPrice" oninput="updateAddTotal()" />
+
+                    <label>Quantity</label>
+                    <input type="number" id="addQuantityOther" name="Quantity" oninput="updateAddTotal()" />
+
+                    <label>Total Amount</label>
+                    <input type="number" id="addTotalAmountOther" name="TotalAmount" readonly />
+
+                    <label>Amount Paid</label>
+                    <input type="number" name="AmountPaid" />
+
+                    <label>Date Paid</label>
+                    <input type="date" name="DatePaid" />
+                </div>
+
+                <br /><br />
+                <button type="submit">Add</button>
+                <button type="button" class="close-btn" onclick="closeAddForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openAddForm() {
+            document.getElementById("addModal").style.display = "flex";
+        }
+
+        function closeAddForm() {
+            document.getElementById("addModal").style.display = "none";
+            document.getElementById("addForm").reset();
+            document.getElementById("amenityFields").classList.add("hidden");
+            document.getElementById("otherFields").classList.add("hidden");
+        }
+
+        function updateAddFormFields() {
+            const saleType = document.getElementById("addSaleType").value;
+            if (saleType === "Amenity") {
+                document.getElementById("amenityFields").classList.remove("hidden");
+                document.getElementById("otherFields").classList.add("hidden");
+            } else {
+                document.getElementById("amenityFields").classList.add("hidden");
+                document.getElementById("otherFields").classList.remove("hidden");
+            }
+        }
+
+        function updateAddTotal() {
+            const qty = parseFloat(document.getElementById("addQuantity")?.value || document.getElementById("addQuantityOther")?.value || 0);
+            const price = parseFloat(document.getElementById("addUnitPrice")?.value || document.getElementById("addUnitPriceOther")?.value || 0);
+            const totalField = document.getElementById("addTotalAmount") || document.getElementById("addTotalAmountOther");
+            totalField.value = qty * price;
+        }
+
+        // Close modal on outside click
+        window.onclick = function (e) {
+            if (["addModal"].includes(e.target.id)) closeAddForm();
+        }
+    </script>
+</body>
+</html>

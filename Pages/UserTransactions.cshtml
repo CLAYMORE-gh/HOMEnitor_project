@@ -1,0 +1,160 @@
+﻿@page
+@model HOMEnitor.Pages.UserTransactionsModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>User Transactions</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f8f8f8;
+        }
+
+        .sidebar {
+            width: 230px;
+            background: linear-gradient(to top, #ff1300, #ff6a00);
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h2 {
+                text-align: center;
+                font-size: 22px;
+                margin-bottom: 25px;
+                font-weight: bold;
+            }
+
+            .sidebar a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 12px 15px;
+                border-radius: 6px;
+                margin-bottom: 8px;
+                font-weight: 500;
+                transition: background-color 0.2s ease, transform 0.1s ease;
+            }
+
+                .sidebar a:hover {
+                    background-color: #ca4c35;
+                    transform: translateX(3px);
+                }
+
+                .sidebar a.active {
+                    background-color: #ca4c35;
+                }
+
+        .main {
+            margin-left: 250px;
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #ff1300;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .logout-btn {
+            background-color: white;
+            color: #ff1300;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+            .logout-btn:hover {
+                background-color: #ca4c35;
+                color: white;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>User</h2>
+        <a href="/UserDashboard">Dashboard</a>
+        <a href="/UserComplaint">Complaints</a>
+        <a href="/UserAmenity">Amenities</a>
+        <a href="/UserTransactions" class="active">Transactions</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>My Transactions</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Date Paid</th>
+                    <th>Sale Type</th>
+                    <th>Amount Paid</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Transactions.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5">No transactions found.</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var t in Model.Transactions)
+                    {
+                        <tr>
+                            <td>@t.TransactionID</td>
+                            <td>@t.DatePaid.ToString("yyyy-MM-dd")</td>
+                            <td>@t.SaleType</td>
+                            <td>₱@t.AmountPaid.ToString("N2")</td>
+                            <td>@t.TotalAmount</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

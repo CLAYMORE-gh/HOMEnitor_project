@@ -1,0 +1,160 @@
+﻿@page
+@model HOMEnitor.Pages.AdminTransactionModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Manage Transactions";
+}
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="~/css/site.css" />
+
+<head>
+    <meta charset="utf-8" />
+    <title>Manage Transactions</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="/AdminDashboard">Dashboard</a>
+        <a href="/AdminHomeowners">Homeowners</a>
+        <a href="/AdminUnits">Units</a>
+        <a href="/AdminTransaction" class="active">Transactions</a>
+        <a href="/AdminComplaints">Complaints</a>
+        <a href="/AdminAmenity">Amenity</a>
+        <a href="/AdminUsers">Users</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Manage Transactions</h1>
+
+        <h2>Transactions List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>Sale Type</th>
+                    <th>Payment Method</th>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Amount Paid</th>
+                    <th>Total</th>
+                    <th>Date Paid</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Transactions != null && Model.Transactions.Any())
+                {
+                    foreach (var t in Model.Transactions)
+                    {
+                        <tr>
+                            <td>@t.TransactionID</td>
+                            <td>@t.UserID</td>
+                            <td>@t.SaleType</td>
+                            <td>@t.PaymentMethod</td>
+                            <td>@t.ItemDescription</td>
+                            <td>@t.Quantity</td>
+                            <td>₱@t.UnitPrice.ToString("N2")</td>
+                            <td>₱@t.AmountPaid.ToString("N2")</td>
+                            <td>₱@t.TotalAmount.ToString("N2")</td>
+                            <td>@t.DatePaid.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <button type="button" onclick="openViewModal(
+                                            '@t.TransactionID',
+                                            '@t.UserID',
+                                            '@t.SaleType',
+                                            '@t.PaymentMethod',
+                                            '@t.ItemDescription',
+                                            '@t.Quantity',
+                                            '@t.UnitPrice',
+                                            '@t.AmountPaid',
+                                            '@t.TotalAmount',
+                                            '@t.DatePaid.ToString("yyyy-MM-dd")'
+                                        )">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="11">No transactions found.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- View Modal -->
+    <div class="modal" id="viewModal">
+        <div class="modal-content">
+            <h2>Transaction Details</h2>
+
+            <label>Transaction ID</label>
+            <input type="text" id="viewTransactionID" readonly />
+
+            <label>User ID</label>
+            <input type="text" id="viewUserID" readonly />
+
+            <label>Sale Type</label>
+            <input type="text" id="viewSaleType" readonly />
+
+            <label>Payment Method</label>
+            <input type="text" id="viewPaymentMethod" readonly />
+
+            <label>Item Description</label>
+            <input type="text" id="viewItemDescription" readonly />
+
+            <label>Quantity</label>
+            <input type="text" id="viewQuantity" readonly />
+
+            <label>Unit Price</label>
+            <input type="text" id="viewUnitPrice" readonly />
+
+            <label>Amount Paid</label>
+            <input type="text" id="viewAmountPaid" readonly />
+
+            <label>Total Amount</label>
+            <input type="text" id="viewTotalAmount" readonly />
+
+            <label>Date Paid</label>
+            <input type="text" id="viewDatePaid" readonly />
+
+            <br /><br />
+            <button type="button" class="close-btn" onclick="closeViewModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openViewModal(id, uid, sale, method, item, qty, unit, paid, total, date) {
+            document.getElementById("viewTransactionID").value = id;
+            document.getElementById("viewUserID").value = uid;
+            document.getElementById("viewSaleType").value = sale;
+            document.getElementById("viewPaymentMethod").value = method;
+            document.getElementById("viewItemDescription").value = item;
+            document.getElementById("viewQuantity").value = qty;
+            document.getElementById("viewUnitPrice").value = unit;
+            document.getElementById("viewAmountPaid").value = paid;
+            document.getElementById("viewTotalAmount").value = total;
+            document.getElementById("viewDatePaid").value = date;
+            document.getElementById("viewModal").style.display = "flex";
+        }
+
+        function closeViewModal() {
+            document.getElementById("viewModal").style.display = "none";
+        }
+
+        window.onclick = function (e) {
+            const modal = document.getElementById("viewModal");
+            if (e.target === modal) modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

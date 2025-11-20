@@ -1,0 +1,109 @@
+﻿@page
+@model HOMEnitor.Pages.UserComplaintModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>User Complaints</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="sidebar">
+        <h2>User</h2>
+        <a href="/UserDashboard">Dashboard</a>
+        <a href="/UserComplaint" class="active">Complaints</a>
+        <a href="/UserAmenity">Amenities</a>
+        <a href="/UserTransactions">Transactions</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>My Complaints</h1>
+        <button onclick="openAddForm()">+ Add Complaint</button>
+        <br></br>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model.Complaints)
+                {
+                    <tr>
+                        <td>@c.ComplaintID</td>
+                        <td>@c.Description</td>
+                        <td>@c.Date</td>
+                        <td>@c.Status</td>
+                        <td>
+                            @if (c.Status == "Pending")
+                            {
+                                <button onclick="editComplaint('@c.ComplaintID','@c.Description')">Edit</button>
+                                <form method="post" asp-page-handler="Delete" style="display:inline;">
+                                    <input type="hidden" name="ComplaintID" value="@c.ComplaintID" />
+                                    <button type="submit">Delete</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span style="color:gray;">Locked</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add Complaint</h2>
+            <form method="post" asp-page-handler="Save">
+                <input type="hidden" name="ComplaintID" id="ComplaintID" />
+                <label>Description:</label>
+                <textarea name="Description" id="Description" rows="4" required></textarea><br />
+                <button id="submitButton" type="submit">Submit</button>
+                <button type="button" class="close-btn" onclick="closeModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openAddForm() {
+            document.getElementById("ComplaintID").value = "";
+            document.getElementById("Description").value = "";
+            document.getElementById("modalTitle").innerText = "Add Complaint";
+            document.getElementById("submitButton").innerText = "Submit";
+            document.getElementById("complaintModal").style.display = "flex";
+        }
+
+        function editComplaint(id, desc) {
+            document.getElementById("ComplaintID").value = id;
+            document.getElementById("Description").value = desc;
+            document.getElementById("modalTitle").innerText = "Edit Complaint";
+            document.getElementById("submitButton").innerText = "Save";
+            document.getElementById("complaintModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("complaintModal").style.display = "none";
+        }
+
+        window.onclick = function (e) {
+            const modal = document.getElementById("complaintModal");
+            if (e.target === modal) modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

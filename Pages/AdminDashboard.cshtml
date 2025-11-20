@@ -1,0 +1,72 @@
+﻿@page
+@model HOMEnitor.Pages.AdminDashboardModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Admin</h2>
+
+        <a href="/AdminDashboard" class="active">Dashboard</a>
+        <a href="/AdminHomeowners">Homeowners</a>
+        <a href="/AdminUnits">Units</a>
+        <a href="/AdminTransaction">Transactions</a>
+        <a href="/AdminComplaints">Complaints</a>
+        <a href="/AdminAmenity">Amenity</a>
+        <a href="/AdminUsers">Users</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <h1>Welcome, Admin #@Model.UserID</h1>
+        <p>Subdivision Overview:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Homeowners</td>
+                    <td>@Model.TotalHomeowners</td>
+                </tr>
+                <tr>
+                    <td>Total Units</td>
+                    <td>@Model.TotalUnits</td>
+                </tr>
+                <tr>
+                    <td>Total Transactions</td>
+                    <td>@Model.TotalTransactions</td>
+                </tr>
+                <tr>
+                    <td>Pending Complaints</td>
+                    <td>@Model.PendingComplaints</td>
+                </tr>
+                <tr>
+                    <td>Available Amenities</td>
+                    <td>@Model.TotalAmenities</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+﻿@page
+@model HOMEnitor.Pages.AdminUnitsModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Manage Units";
+}
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="~/css/site.css" />
+
+<head>
+    <meta charset="utf-8" />
+    <title>Manage Units</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="/AdminDashboard">Dashboard</a>
+        <a href="/AdminHomeowners">Homeowners</a>
+        <a href="/AdminUnits" class="active">Units</a>
+        <a href="/AdminTransaction">Transactions</a>
+        <a href="/AdminComplaints">Complaints</a>
+        <a href="/AdminAmenity">Amenity</a>
+        <a href="/AdminUsers">Users</a>
+
+        <form method="post" asp-page-handler="Logout">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div class="main">
+        <h1>Manage Units</h1>
+
+        <button class="add-btn" onclick="openAddForm()">+ Add New Unit</button>
+
+        <h2>Units List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Unit ID</th>
+                    <th>Homeowner ID</th>
+                    <th>Village</th>
+                    <th>Payment Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var u in Model.Units)
+                {
+                    <tr>
+                        <td>@u.UnitID</td>
+                        <td>@u.HomeownerID</td>
+                        <td>@u.Village</td>
+                        <td>@u.PaymentStatus</td>
+                        <td>
+                            <button type="button" onclick="openEditForm('@u.UnitID', '@u.HomeownerID', '@u.Village', '@u.PaymentStatus')">Edit</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Add Unit</h2>
+            <form method="post" asp-page-handler="Add">
+                <label>Unit ID</label>
+                <input type="text" name="UnitID" value="(Auto)" readonly />
+
+                <label>Homeowner ID</label>
+                <input type="number" name="HomeownerID" required />
+
+                <label>Village</label>
+                <select name="Village" required>
+                    <option value="Narra">Narra</option>
+                    <option value="Molave">Molave</option>
+                    <option value="Acacia">Acacia</option>
+                    <option value="Maple">Maple</option>
+                </select>
+
+                <label>Payment Status</label>
+                <select name="PaymentStatus" required>
+                    <option value="Fully Paid">Fully Paid</option>
+                    <option value="Not Fully Paid">Not Fully Paid</option>
+                </select>
+
+                <br /><br />
+                <button type="submit">Add</button>
+                <button type="button" class="close-btn" onclick="closeAddForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Unit</h2>
+            <form method="post" asp-page-handler="Update">
+                <label>Unit ID</label>
+                <input type="text" id="editUnitID" name="UnitID" readonly />
+
+                <label>Homeowner ID</label>
+                <input type="number" id="editHomeownerID" name="HomeownerID" required />
+
+                <label>Village</label>
+                <select id="editVillage" name="Village" disabled>
+                    <option value="Narra">Narra</option>
+                    <option value="Molave">Molave</option>
+                    <option value="Acacia">Acacia</option>
+                    <option value="Maple">Maple</option>
+                </select>
+
+                <label>Payment Status</label>
+                <select id="editPaymentStatus" name="PaymentStatus" required>
+                    <option value="Fully Paid">Fully Paid</option>
+                    <option value="Not Fully Paid">Not Fully Paid</option>
+                </select>
+
+                <br /><br />
+                <button type="submit">Save</button>
+                <button type="button" class="close-btn" onclick="closeEditForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openAddForm() {
+            document.getElementById("addModal").style.display = "flex";
+        }
+
+        function closeAddForm() {
+            document.getElementById("addModal").style.display = "none";
+        }
+
+        function openEditForm(unitID, homeownerID, village, paymentStatus) {
+            document.getElementById("editUnitID").value = unitID;
+            document.getElementById("editHomeownerID").value = homeownerID;
+            document.getElementById("editVillage").value = village;
+            document.getElementById("editPaymentStatus").value = paymentStatus;
+            document.getElementById("editModal").style.display = "flex";
+        }
+
+        function closeEditForm() {
+            document.getElementById("editModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const addModal = document.getElementById("addModal");
+            const editModal = document.getElementById("editModal");
+            if (event.target === addModal) addModal.style.display = "none";
+            if (event.target === editModal) editModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\laragon\\www\\HOMEnitor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\cashiertransactions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\cashiertransactions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\cashiertransactions.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\cashiertransactions.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\models\\homeowner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:models\\homeowner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\cashierdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\cashierdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\cashieramenity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\cashieramenity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\usercomplaint.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\usercomplaint.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\adminhomeowners.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\adminhomeowners.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\cashieramenity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\cashieramenity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\useramenity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\useramenity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\usercomplaint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\usercomplaint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\adminamenity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\adminamenity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\adminamenity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\adminamenity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\useramenity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\useramenity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\models\\amenity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:models\\amenity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\models\\complaint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:models\\complaint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\adminusers.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\adminusers.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\admincomplaints.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\admincomplaints.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\adminusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\adminusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\adminunits.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\adminunits.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\admintransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\admintransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|c:\\laragon\\www\\homenitor\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44D620AC-5B44-4F77-9AFF-E45E40ED5DBC}|HOMEnitor.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Homeowner.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Models\\Homeowner.cs",
+              "RelativeDocumentMoniker": "Models\\Homeowner.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Models\\Homeowner.cs",
+              "RelativeToolTip": "Models\\Homeowner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T06:11:16.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CashierAmenity.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierAmenity.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\CashierAmenity.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierAmenity.cshtml.cs",
+              "RelativeToolTip": "Pages\\CashierAmenity.cshtml.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAywDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T14:42:55.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CashierDashboard.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierDashboard.cshtml",
+              "RelativeDocumentMoniker": "Pages\\CashierDashboard.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierDashboard.cshtml",
+              "RelativeToolTip": "Pages\\CashierDashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-18T14:32:07.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Pages\\_ViewStart.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-18T14:19:43.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AdminAmenity.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminAmenity.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\AdminAmenity.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminAmenity.cshtml.cs",
+              "RelativeToolTip": "Pages\\AdminAmenity.cshtml.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAuwEQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T14:11:07.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserAmenity.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserAmenity.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\UserAmenity.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserAmenity.cshtml.cs",
+              "RelativeToolTip": "Pages\\UserAmenity.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T03:55:04.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserAmenity.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserAmenity.cshtml",
+              "RelativeDocumentMoniker": "Pages\\UserAmenity.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserAmenity.cshtml",
+              "RelativeToolTip": "Pages\\UserAmenity.cshtml",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAJ0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T08:04:36.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-11T07:28:53.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AdminAmenity.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminAmenity.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminAmenity.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminAmenity.cshtml",
+              "RelativeToolTip": "Pages\\AdminAmenity.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:29:22.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CashierTransactions.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierTransactions.cshtml",
+              "RelativeDocumentMoniker": "Pages\\CashierTransactions.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierTransactions.cshtml",
+              "RelativeToolTip": "Pages\\CashierTransactions.cshtml",
+              "ViewState": "AgIAALgAAAAAAAAAAAAcwMQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-16T14:27:31.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CashierTransactions.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierTransactions.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\CashierTransactions.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierTransactions.cshtml.cs",
+              "RelativeToolTip": "Pages\\CashierTransactions.cshtml.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAwwJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T14:27:35.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "Models\\Transaction.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Models\\Transaction.cs",
+              "RelativeToolTip": "Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T14:32:09.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Complaint.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Models\\Complaint.cs",
+              "RelativeDocumentMoniker": "Models\\Complaint.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Models\\Complaint.cs",
+              "RelativeToolTip": "Models\\Complaint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T04:07:51.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Amenity.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Models\\Amenity.cs",
+              "RelativeDocumentMoniker": "Models\\Amenity.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Models\\Amenity.cs",
+              "RelativeToolTip": "Models\\Amenity.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T03:56:03.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserComplaint.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserComplaint.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\UserComplaint.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserComplaint.cshtml.cs",
+              "RelativeToolTip": "Pages\\UserComplaint.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T07:17:51.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\Login.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Login.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\Login.cshtml",
+              "RelativeToolTip": "Pages\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:29:24.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserComplaint.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserComplaint.cshtml",
+              "RelativeDocumentMoniker": "Pages\\UserComplaint.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\UserComplaint.cshtml",
+              "RelativeToolTip": "Pages\\UserComplaint.cshtml",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAmwGMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-16T03:47:30.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AdminUsers.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminUsers.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\AdminUsers.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminUsers.cshtml.cs",
+              "RelativeToolTip": "Pages\\AdminUsers.cshtml.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAkwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:16:34.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Login.cshtml.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\Login.cshtml.cs",
+              "RelativeToolTip": "Pages\\Login.cshtml.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAmwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T07:18:03.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AdminComplaints.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminComplaints.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminComplaints.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminComplaints.cshtml",
+              "RelativeToolTip": "Pages\\AdminComplaints.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:52:29.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdminDashboard.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminDashboard.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminDashboard.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminDashboard.cshtml",
+              "RelativeToolTip": "Pages\\AdminDashboard.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:49:29.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T08:22:32.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AdminUsers.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminUsers.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminUsers.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminUsers.cshtml",
+              "RelativeToolTip": "Pages\\AdminUsers.cshtml",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAmwJ0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:53:46.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T07:13:59.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T07:13:49.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminHomeowners.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminHomeowners.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminHomeowners.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminHomeowners.cshtml",
+              "RelativeToolTip": "Pages\\AdminHomeowners.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:52:04.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CashierAmenity.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierAmenity.cshtml",
+              "RelativeDocumentMoniker": "Pages\\CashierAmenity.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\CashierAmenity.cshtml",
+              "RelativeToolTip": "Pages\\CashierAmenity.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:53:55.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AdminUnits.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminUnits.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminUnits.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminUnits.cshtml",
+              "RelativeToolTip": "Pages\\AdminUnits.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:53:35.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AdminTransaction.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminTransaction.cshtml",
+              "RelativeDocumentMoniker": "Pages\\AdminTransaction.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\AdminTransaction.cshtml",
+              "RelativeToolTip": "Pages\\AdminTransaction.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:53:17.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\laragon\\www\\HOMEnitor\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\laragon\\www\\HOMEnitor\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T07:31:26.289Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
