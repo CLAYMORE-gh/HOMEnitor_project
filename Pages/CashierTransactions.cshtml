@@ -4,7 +4,6 @@
     Layout = null;
     ViewData["Title"] = "Manage Transactions";
 }
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +18,26 @@
 
         .hidden {
             display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 18px;
+            width: 420px;
+            border-radius: 8px;
+        }
+
+        .close-btn {
+            margin-left: 8px;
         }
     </style>
 </head>
@@ -70,8 +89,11 @@
                         <td>@t.TotalAmount</td>
                         <td>@t.DatePaid.ToString("yyyy-MM-dd")</td>
                         <td>
-                            <button onclick="openEditForm('@t.TransactionID','@t.UserID','@t.SaleType.Replace("'", "\\'")','@t.PaymentMethod.Replace("'", "\\'")','@t.ItemDescription.Replace("'", "\\'")','@t.Quantity','@t.UnitPrice','@t.AmountPaid','@t.TotalAmount')">Edit</button>
-                            <button onclick="openDeleteForm('@t.TransactionID')">Delete</button>
+                            <button type="button"
+                                    onclick="openEditForm('@t.TransactionID','@t.UserID','@t.SaleType.Replace("'", "\\'")','@t.PaymentMethod.Replace("'", "\\'")','@t.ItemDescription.Replace("'", "\\'")','@t.Quantity','@t.UnitPrice','@t.AmountPaid','@t.TotalAmount')">
+                                Edit
+                            </button>
+                            <button type="button" onclick="openDeleteForm('@t.TransactionID')">Delete</button>
                         </td>
                     </tr>
                 }
@@ -85,12 +107,12 @@
             <h2>Add Transaction</h2>
             <form method="post" asp-page-handler="Add" id="addForm">
                 <label>User ID</label>
-                <input type="number" name="UserID" required />
+                <input type="number" name="UserID" id="addUserID" required />
 
                 <label>Sale Type</label>
                 <select name="SaleType" id="addSaleType" required class="select-field" onchange="updateAddFormFields()">
                     <option value="" disabled selected>Select Sale Type</option>
-                    <option value="Amenity">Amenity</option>
+                    <option value="Amenity Fee">Amenity</option>
                     <option value="House Payment">House Payment</option>
                     <option value="Monthly Dues">Monthly Dues</option>
                     <option value="Maintenance">Maintenance</option>
@@ -99,32 +121,32 @@
                 <!-- Amenity Fields -->
                 <div id="amenityFields" class="dynamic-field hidden">
                     <label>Payment Method</label>
-                    <select name="PaymentMethod" class="select-field">
+                    <select name="PaymentMethod" class="select-field" id="addPaymentMethodAmenity">
                         <option value="Cash">Cash</option>
                         <option value="Card">Card</option>
                         <option value="Others">Others</option>
                     </select>
 
                     <label>Amenity Description</label>
-                    <input type="text" name="ItemDescription" />
+                    <input type="text" name="ItemDescription" id="addItemDescription" />
 
                     <label>Unit Price</label>
-                    <input type="number" id="addUnitPrice" name="UnitPrice" oninput="updateAddTotal()" />
+                    <input type="number" id="addUnitPrice" name="UnitPrice" oninput="updateAddTotal()" min="0" />
 
                     <label>Quantity</label>
-                    <input type="number" id="addQuantity" name="Quantity" oninput="updateAddTotal()" />
+                    <input type="number" id="addQuantity" name="Quantity" oninput="updateAddTotal()" min="1" value="1" />
 
                     <label>Total Amount</label>
                     <input type="number" id="addTotalAmount" name="TotalAmount" readonly />
 
                     <label>Amount Paid</label>
-                    <input type="number" name="AmountPaid" />
+                    <input type="number" name="AmountPaid" id="addAmountPaid" value="0" />
                 </div>
 
                 <!-- Other Sale Types Fields -->
                 <div id="otherFields" class="dynamic-field hidden">
                     <label>Payment Method</label>
-                    <select name="PaymentMethod" class="select-field">
+                    <select name="PaymentMethod" class="select-field" id="addPaymentMethodOther">
                         <option value="" disabled selected>Select Payment Method</option>
                         <option value="Cash">Cash</option>
                         <option value="Card">Card</option>
@@ -132,36 +154,92 @@
                     </select>
 
                     <label>Item Description</label>
-                    <input type="text" name="ItemDescription" />
+                    <input type="text" name="ItemDescription" id="addItemDescriptionOther" />
 
                     <label>Unit Price</label>
-                    <input type="number" id="addUnitPriceOther" name="UnitPrice" oninput="updateAddTotal()" />
+                    <input type="number" id="addUnitPriceOther" name="UnitPrice" oninput="updateAddTotal()" min="0" />
 
                     <label>Quantity</label>
-                    <input type="number" id="addQuantityOther" name="Quantity" oninput="updateAddTotal()" />
+                    <input type="number" id="addQuantityOther" name="Quantity" oninput="updateAddTotal()" min="1" value="1" />
 
                     <label>Total Amount</label>
                     <input type="number" id="addTotalAmountOther" name="TotalAmount" readonly />
 
                     <label>Amount Paid</label>
-                    <input type="number" name="AmountPaid" />
+                    <input type="number" name="AmountPaid" id="addAmountPaidOther" value="0" />
 
                     <label>Date Paid</label>
-                    <input type="date" name="DatePaid" />
+                    <input type="date" name="DatePaid" id="addDatePaid" />
                 </div>
 
-                <br /><br />
+                <br />
                 <button type="submit">Add</button>
                 <button type="button" class="close-btn" onclick="closeAddForm()">Cancel</button>
             </form>
         </div>
     </div>
 
+    <!-- EDIT MODAL -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Transaction</h2>
+            <form method="post" asp-page-handler="Edit" id="editForm">
+                <input type="hidden" name="TransactionID" id="editTransactionID" />
+
+                <label>User ID</label>
+                <input type="number" name="UserID" id="editUserID" required />
+
+                <label>Sale Type</label>
+                <select name="SaleType" id="editSaleType" required>
+                    <option value="Amenity Fee">Amenity</option>
+                    <option value="House Payment">House Payment</option>
+                    <option value="Monthly Dues">Monthly Dues</option>
+                    <option value="Maintenance">Maintenance</option>
+                </select>
+
+                <label>Payment Method</label>
+                <input type="text" name="PaymentMethod" id="editPaymentMethod" required />
+
+                <label>Item Description</label>
+                <input type="text" name="ItemDescription" id="editItemDescription" />
+
+                <label>Unit Price</label>
+                <input type="number" name="UnitPrice" id="editUnitPrice" required oninput="updateEditTotal()" min="0" />
+
+                <label>Quantity</label>
+                <input type="number" name="Quantity" id="editQuantity" required oninput="updateEditTotal()" min="1" />
+
+                <label>Total Amount</label>
+                <input type="number" name="TotalAmount" id="editTotalAmount" readonly />
+
+                <label>Amount Paid</label>
+                <input type="number" name="AmountPaid" id="editAmountPaid" required />
+
+                <br /><br />
+                <button type="submit">Save Changes</button>
+                <button type="button" class="close-btn" onclick="closeEditForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- DELETE MODAL -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h2>Delete Transaction</h2>
+            <p>Are you sure you want to delete this transaction?</p>
+            <form method="post" asp-page-handler="Delete">
+                <input type="hidden" name="TransactionID" id="deleteTransactionID" />
+                <button type="submit" class="delete-btn">Yes, Delete</button>
+                <button type="button" class="close-btn" onclick="closeDeleteForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // ADD modal
         function openAddForm() {
             document.getElementById("addModal").style.display = "flex";
         }
-
         function closeAddForm() {
             document.getElementById("addModal").style.display = "none";
             document.getElementById("addForm").reset();
@@ -171,7 +249,7 @@
 
         function updateAddFormFields() {
             const saleType = document.getElementById("addSaleType").value;
-            if (saleType === "Amenity") {
+            if (saleType === "Amenity Fee") {
                 document.getElementById("amenityFields").classList.remove("hidden");
                 document.getElementById("otherFields").classList.add("hidden");
             } else {
@@ -184,13 +262,48 @@
             const qty = parseFloat(document.getElementById("addQuantity")?.value || document.getElementById("addQuantityOther")?.value || 0);
             const price = parseFloat(document.getElementById("addUnitPrice")?.value || document.getElementById("addUnitPriceOther")?.value || 0);
             const totalField = document.getElementById("addTotalAmount") || document.getElementById("addTotalAmountOther");
-            totalField.value = qty * price;
+            if (totalField) totalField.value = (qty * price).toFixed(2);
         }
 
-        // Close modal on outside click
-        window.onclick = function (e) {
-            if (["addModal"].includes(e.target.id)) closeAddForm();
+        // EDIT modal
+        function openEditForm(id, user, sale, method, desc, qty, price, paid, total) {
+            document.getElementById("editTransactionID").value = id;
+            document.getElementById("editUserID").value = user;
+            document.getElementById("editSaleType").value = sale;
+            document.getElementById("editPaymentMethod").value = method;
+            document.getElementById("editItemDescription").value = desc;
+            document.getElementById("editQuantity").value = qty;
+            document.getElementById("editUnitPrice").value = price;
+            document.getElementById("editAmountPaid").value = paid;
+            document.getElementById("editTotalAmount").value = total;
+
+            document.getElementById("editModal").style.display = "flex";
         }
+        function closeEditForm() {
+            document.getElementById("editModal").style.display = "none";
+            // optional reset
+        }
+        function updateEditTotal() {
+            const qty = parseFloat(document.getElementById("editQuantity")?.value || 0);
+            const price = parseFloat(document.getElementById("editUnitPrice")?.value || 0);
+            document.getElementById("editTotalAmount").value = (qty * price).toFixed(2);
+        }
+
+        // DELETE modal
+        function openDeleteForm(id) {
+            document.getElementById("deleteTransactionID").value = id;
+            document.getElementById("deleteModal").style.display = "flex";
+        }
+        function closeDeleteForm() {
+            document.getElementById("deleteModal").style.display = "none";
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (e) {
+            if (e.target.id === "addModal") closeAddForm();
+            if (e.target.id === "editModal") closeEditForm();
+            if (e.target.id === "deleteModal") closeDeleteForm();
+        };
     </script>
 </body>
 </html>

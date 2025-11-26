@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace HOMEnitor.Pages
 {
@@ -14,11 +16,11 @@ namespace HOMEnitor.Pages
 
         public string ErrorMessage { get; set; } = string.Empty;
 
-        private readonly string connectionString = "server=127.0.0.1;user=root;password=;database=homenitor_db;";
+        private readonly string connectionString =
+            "server=127.0.0.1;user=root;password=;database=homenitor_db;";
 
         public void OnGet()
         {
-            // Clear previous sessions when visiting login page
             HttpContext.Session.Clear();
         }
 
@@ -33,27 +35,31 @@ namespace HOMEnitor.Pages
             using var con = new MySqlConnection(connectionString);
             con.Open();
 
-            // UPDATED QUERY: Use Username instead of UserID
-            var cmd = new MySqlCommand("SELECT UserID, UserType, Password FROM user WHERE Username = @uname", con);
+            // Username-based login
+            var cmd = new MySqlCommand(
+                "SELECT UserID, UserType, Password FROM user WHERE Username = @uname",
+                con
+            );
             cmd.Parameters.AddWithValue("@uname", Username);
 
             using var reader = cmd.ExecuteReader();
 
             if (reader.Read())
             {
-                string dbPassword = reader.GetString("Password");
+                string dbPasswordHash = reader.GetString("Password");
                 string userType = reader.GetString("UserType");
                 int dbUserID = reader.GetInt32("UserID");
 
-                // Compare password
-                if (dbPassword == Password)
+                // Hash entered password
+                string hashedInputPassword = HashPassword(Password);
+
+                if (dbPasswordHash == hashedInputPassword)
                 {
-                    // Store session
                     HttpContext.Session.SetInt32("UserID", dbUserID);
                     HttpContext.Session.SetString("UserType", userType);
                     HttpContext.Session.SetString("Username", Username);
 
-                    // Redirect based on user type
+                    // Redirect based on user role
                     return userType switch
                     {
                         "Admin" => RedirectToPage("/AdminDashboard"),
@@ -65,9 +71,15 @@ namespace HOMEnitor.Pages
                 }
             }
 
-            // If not found or password mismatch
             ErrorMessage = "Invalid Username or Password.";
             return Page();
+        }
+
+        private string HashPassword(string password)
+        {
+            using var sha = SHA256.Create();
+            var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLower();
         }
     }
 }

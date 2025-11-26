@@ -17,13 +17,13 @@ namespace HOMEnitor.Models
         public string UserType { get; set; } = string.Empty;
 
         [Required]
-        [Column("Username")] // Updated
+        [Column("Username")]
         [StringLength(100)]
         public string Username { get; set; } = string.Empty;
 
         [Required]
         [Column("Password")]
-        [StringLength(100)]
+        [StringLength(255)] 
         public string Password { get; set; } = string.Empty;
 
         [Column("DateCreated")]

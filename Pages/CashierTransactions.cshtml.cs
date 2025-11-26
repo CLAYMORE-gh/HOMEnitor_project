@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
-using System.Data;
+using System;
+using System.Collections.Generic;
 
 namespace HOMEnitor.Pages
 {
@@ -13,6 +14,7 @@ namespace HOMEnitor.Pages
 
         public void OnGet()
         {
+            Transactions.Clear();
             using var con = new MySqlConnection(connectionString);
             con.Open();
 
@@ -31,7 +33,7 @@ namespace HOMEnitor.Pages
                     AmountPaid = reader.GetInt32(reader.GetOrdinal("AmountPaid")),
                     TotalAmount = reader.GetDecimal(reader.GetOrdinal("TotalAmount")),
                     SaleType = reader.IsDBNull(reader.GetOrdinal("SaleType")) ? string.Empty : reader.GetString(reader.GetOrdinal("SaleType")),
-                    DatePaid = reader.GetDateTime(reader.GetOrdinal("DatePaid")),
+                    DatePaid = reader.IsDBNull(reader.GetOrdinal("DatePaid")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("DatePaid")),
                     PaymentMethod = reader.IsDBNull(reader.GetOrdinal("PaymentMethod")) ? string.Empty : reader.GetString(reader.GetOrdinal("PaymentMethod")),
                     ItemDescription = reader.IsDBNull(reader.GetOrdinal("ItemDescription")) ? string.Empty : reader.GetString(reader.GetOrdinal("ItemDescription"))
                 });
@@ -39,15 +41,15 @@ namespace HOMEnitor.Pages
         }
 
         public IActionResult OnPostAdd(
-     int UserID,
-     int UnitPrice,
-     int Quantity,
-     int AmountPaid,
-     decimal TotalAmount,
-     string SaleType,
-     string PaymentMethod,
-     string ItemDescription,
-     DateTime? DatePaid)   // <?? ADD THIS
+            int UserID,
+            int UnitPrice,
+            int Quantity,
+            int AmountPaid,
+            decimal TotalAmount,
+            string SaleType,
+            string PaymentMethod,
+            string ItemDescription,
+            DateTime? DatePaid)
         {
             using var con = new MySqlConnection(connectionString);
             con.Open();
@@ -60,19 +62,15 @@ namespace HOMEnitor.Pages
                       @ItemDescription)";
 
             using var cmd = new MySqlCommand(query, con);
-
             cmd.Parameters.AddWithValue("@UserID", UserID);
             cmd.Parameters.AddWithValue("@UnitPrice", UnitPrice);
             cmd.Parameters.AddWithValue("@Quantity", Quantity);
             cmd.Parameters.AddWithValue("@AmountPaid", AmountPaid);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
             cmd.Parameters.AddWithValue("@SaleType", SaleType);
-
-            // Use provided DatePaid OR auto-set to now
             cmd.Parameters.AddWithValue("@DatePaid", DatePaid ?? DateTime.Now);
-
-            cmd.Parameters.AddWithValue("@PaymentMethod", PaymentMethod);
-            cmd.Parameters.AddWithValue("@ItemDescription", ItemDescription);
+            cmd.Parameters.AddWithValue("@PaymentMethod", PaymentMethod ?? string.Empty);
+            cmd.Parameters.AddWithValue("@ItemDescription", ItemDescription ?? string.Empty);
 
             cmd.ExecuteNonQuery();
 
@@ -80,15 +78,16 @@ namespace HOMEnitor.Pages
         }
 
         public IActionResult OnPostEdit(
-      int TransactionID,
-      int UserID,
-      int UnitPrice,
-      int Quantity,
-      int AmountPaid,
-      decimal TotalAmount,
-      string SaleType,
-      string PaymentMethod,
-      string ItemDescription)
+            int TransactionID,
+            int UserID,
+            int UnitPrice,
+            int Quantity,
+            int AmountPaid,
+            decimal TotalAmount,
+            string SaleType,
+            string PaymentMethod,
+            string ItemDescription,
+            DateTime? DatePaid = null)
         {
             using var con = new MySqlConnection(connectionString);
             con.Open();
@@ -106,15 +105,14 @@ namespace HOMEnitor.Pages
             cmd.Parameters.AddWithValue("@Quantity", Quantity);
             cmd.Parameters.AddWithValue("@AmountPaid", AmountPaid);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-            cmd.Parameters.AddWithValue("@SaleType", SaleType);
-            cmd.Parameters.AddWithValue("@DatePaid", DateTime.Now);
-            cmd.Parameters.AddWithValue("@PaymentMethod", PaymentMethod);
-            cmd.Parameters.AddWithValue("@ItemDescription", ItemDescription);
+            cmd.Parameters.AddWithValue("@SaleType", SaleType ?? string.Empty);
+            cmd.Parameters.AddWithValue("@DatePaid", DatePaid ?? DateTime.Now);
+            cmd.Parameters.AddWithValue("@PaymentMethod", PaymentMethod ?? string.Empty);
+            cmd.Parameters.AddWithValue("@ItemDescription", ItemDescription ?? string.Empty);
 
             cmd.ExecuteNonQuery();
             return RedirectToPage();
         }
-
 
         public IActionResult OnPostDelete(int TransactionID)
         {

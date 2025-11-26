@@ -137,14 +137,21 @@
     </div>
 
     <script>
-        function openModal(id) { document.getElementById(id).style.display = "block"; }
-        function closeModal(id) { document.getElementById(id).style.display = "none"; }
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+        }
 
-        function openEditModal(id, type, username, password) {
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        function openEditModal(id, type, username) {
             document.getElementById('editUserID').value = id;
             document.getElementById('editUserType').value = type;
             document.getElementById('editUsername').value = username;
-            document.getElementById('editPassword').value = password;
+
+            document.getElementById('editPassword').value = "";
+
             openModal('editModal');
         }
 
@@ -153,5 +160,6 @@
             openModal('deleteModal');
         }
     </script>
+
 </body>
 </html>

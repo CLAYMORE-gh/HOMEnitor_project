@@ -54,8 +54,13 @@
                         <td>@c.Date</td>
                         <td>@c.Status</td>
                         <td>
-                            <button type="button" onclick="openEditForm('@c.ComplaintID', '@c.Status')">Change Status</button>
+                            <button type="button"
+                                    onclick="openEditForm('@c.ComplaintID', '@c.Status')"
+                                    @(c.Status == "Resolved" || c.Status == "Dropped" ? "disabled" : "")>
+                                Change Status
+                            </button>
                         </td>
+
                     </tr>
                 }
             </tbody>

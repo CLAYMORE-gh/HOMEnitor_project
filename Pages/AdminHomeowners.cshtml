@@ -4,14 +4,11 @@
     Layout = null;
     ViewData["Title"] = "Manage Homeowners";
 }
-
-<!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="~/css/site.css" />
-
 <head>
     <meta charset="utf-8" />
     <title>Manage Homeowners</title>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <div class="sidebar">
@@ -119,13 +116,23 @@
     </div>
 
     <script>
+        function closeAllModals() {
+            ["addModal", "editModal", "deleteModal"].forEach(id => {
+                document.getElementById(id).style.display = "none";
+            });
+        }
+
         function openAddForm() {
+            closeAllModals();
             document.getElementById("addModal").style.display = "flex";
         }
+
         function closeAddForm() {
             document.getElementById("addModal").style.display = "none";
         }
+
         function openEditForm(id, first, middle, last, contact) {
+            closeAllModals();
             document.getElementById("editHomeownerID").value = id;
             document.getElementById("editFirstName").value = first;
             document.getElementById("editMiddleName").value = middle;
@@ -133,22 +140,30 @@
             document.getElementById("editContactInfo").value = contact;
             document.getElementById("editModal").style.display = "flex";
         }
+
         function closeEditForm() {
             document.getElementById("editModal").style.display = "none";
         }
+
         function confirmDelete(id) {
+            closeAllModals();
             document.getElementById("deleteId").value = id;
             document.getElementById("deleteModal").style.display = "flex";
         }
+
         function closeDeleteForm() {
             document.getElementById("deleteModal").style.display = "none";
         }
-        window.onclick = function (event) {
-            ["addModal", "editModal", "deleteModal"].forEach(id => {
-                const modal = document.getElementById(id);
-                if (event.target === modal) modal.style.display = "none";
+
+        // Close if user clicks outside modal content
+        document.querySelectorAll(".modal").forEach(modal => {
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
             });
-        };
+        });
     </script>
+
 </body>
 </html>

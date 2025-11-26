@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
 using System;
@@ -12,6 +12,14 @@ namespace HOMEnitor.Pages
 
         private readonly string connectionString = "server=127.0.0.1;database=homenitor_db;uid=root;pwd=;";
 
+        // Hardcoded amenity prices
+        private readonly Dictionary<string, double> AmenityPrices = new()
+        {
+            { "Pool", 100 },
+            { "Clubhouse", 150 },
+            { "Basketball Court", 50 }
+        };
+
         public void OnGet()
         {
             LoadAmenities();
@@ -20,6 +28,7 @@ namespace HOMEnitor.Pages
         public void OnPostApprove(int AccessID)
         {
             UpdateStatus(AccessID, "Approved");
+            AddTransactionForAmenity(AccessID);
             LoadAmenities();
         }
 
@@ -38,6 +47,55 @@ namespace HOMEnitor.Pages
             cmd.Parameters.AddWithValue("@Status", status);
             cmd.Parameters.AddWithValue("@AccessID", accessId);
             cmd.ExecuteNonQuery();
+        }
+
+        // MAIN LOGIC – Add to transactions table
+        private void AddTransactionForAmenity(int accessId)
+        {
+            using var conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            // Fetch amenity details
+            string selectQuery = "SELECT UserID, AmenityName FROM amenity WHERE AccessID=@AccessID";
+            using var cmd = new MySqlCommand(selectQuery, conn);
+            cmd.Parameters.AddWithValue("@AccessID", accessId);
+
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return;
+
+            int userId = reader.GetInt32("UserID");
+            string amenity = reader.GetString("AmenityName");
+            reader.Close();
+
+            // Determine price
+            double price = AmenityPrices.ContainsKey(amenity) ? AmenityPrices[amenity] : 0;
+
+            // Prevent duplicate transaction
+            string checkQuery = @"SELECT COUNT(*) FROM transaction 
+                                  WHERE UserID=@UserID 
+                                  AND ItemDescription=@Desc 
+                                  AND SaleType='Amenity Fee'";
+            using var checkCmd = new MySqlCommand(checkQuery, conn);
+            checkCmd.Parameters.AddWithValue("@UserID", userId);
+            checkCmd.Parameters.AddWithValue("@Desc", amenity);
+
+            long count = (long)checkCmd.ExecuteScalar();
+            if (count > 0) return; // Already added → skip
+
+            // Insert new transaction
+            string insertQuery = @"INSERT INTO transaction 
+                (UserID, UnitPrice, Quantity, AmountPaid, TotalAmount, SaleType, PaymentMethod, ItemDescription)
+                VALUES (@UserID, @UnitPrice, @Quantity, @AmountPaid, @TotalAmount, 'Amenity Fee', 'Cash', @Desc)";
+
+            using var insertCmd = new MySqlCommand(insertQuery, conn);
+            insertCmd.Parameters.AddWithValue("@UserID", userId);
+            insertCmd.Parameters.AddWithValue("@UnitPrice", price);
+            insertCmd.Parameters.AddWithValue("@Quantity", 1);
+            insertCmd.Parameters.AddWithValue("@AmountPaid", 0);
+            insertCmd.Parameters.AddWithValue("@TotalAmount", price);
+            insertCmd.Parameters.AddWithValue("@Desc", amenity);
+
+            insertCmd.ExecuteNonQuery();
         }
 
         private void LoadAmenities()
@@ -61,11 +119,13 @@ namespace HOMEnitor.Pages
                 });
             }
         }
+
         public IActionResult OnPostLogout()
         {
             HttpContext.Session.Clear();
             return RedirectToPage("/Login");
         }
+
         public class AmenityInfo
         {
             public int AccessID { get; set; }

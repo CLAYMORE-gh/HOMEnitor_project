@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HOMEnitor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e889fcc17e578eb5bde823773be213098d5d0525")]
 [assembly: System.Reflection.AssemblyProductAttribute("HOMEnitor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HOMEnitor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

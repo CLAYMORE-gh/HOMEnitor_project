@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Security.Cryptography;
+
 
 namespace HOMEnitor.Pages
 {
@@ -18,19 +21,27 @@ namespace HOMEnitor.Pages
 
         public void OnGet() => LoadUsers();
 
+        private string HashPassword(string password)
+        {
+            using var sha = SHA256.Create();
+            var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+        }
         // ADD USER
         public void OnPostAdd()
         {
             using var con = new MySqlConnection(connectionString);
             con.Open();
 
+            string hashedPassword = HashPassword(NewUser.Password);
+
             string query = @"INSERT INTO user (UserType, Username, Password, DateCreated)
-                             VALUES (@UserType, @Username, @Password, @DateCreated)";
+                     VALUES (@UserType, @Username, @Password, @DateCreated)";
             using var cmd = new MySqlCommand(query, con);
 
             cmd.Parameters.AddWithValue("@UserType", NewUser.UserType);
             cmd.Parameters.AddWithValue("@Username", NewUser.Username);
-            cmd.Parameters.AddWithValue("@Password", NewUser.Password);
+            cmd.Parameters.AddWithValue("@Password", hashedPassword);
             cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
 
             cmd.ExecuteNonQuery();
@@ -38,27 +49,31 @@ namespace HOMEnitor.Pages
             LoadUsers();
         }
 
+
         // EDIT USER
         public void OnPostEdit()
         {
             using var con = new MySqlConnection(connectionString);
             con.Open();
 
+            string hashedPassword = HashPassword(EditUser.Password);
+
             string query = @"UPDATE user 
-                             SET UserType=@UserType, Username=@Username, Password=@Password 
-                             WHERE UserID=@UserID";
+                     SET UserType=@UserType, Username=@Username, Password=@Password 
+                     WHERE UserID=@UserID";
 
             using var cmd = new MySqlCommand(query, con);
 
             cmd.Parameters.AddWithValue("@UserID", EditUser.UserID);
             cmd.Parameters.AddWithValue("@UserType", EditUser.UserType);
             cmd.Parameters.AddWithValue("@Username", EditUser.Username);
-            cmd.Parameters.AddWithValue("@Password", EditUser.Password);
+            cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
             cmd.ExecuteNonQuery();
 
             LoadUsers();
         }
+
 
         // DELETE USER
         public void OnPostDelete()
